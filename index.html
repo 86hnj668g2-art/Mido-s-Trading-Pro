@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#080d18">
+
+<title>Mido's Trading Pro</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;background:#080d18;color:#edf2ff;font-family:Arial,sans-serif}
+
+header{background:#111c30;padding:22px 16px;border-bottom:2px solid #e8bb43}
+
+.logo{font-size:24px;font-weight:bold;color:#f4c542}
+
+.sub{font-size:11px;color:#9eabc1;margin-top:6px}
+
+main{max-width:850px;margin:auto;padding:14px}
+
+.card{background:#111c30;border:1px solid #293b56;border-radius:13px;padding:16px;margin-bottom:14px}
+
+h2{font-size:17px;margin:0 0 14px;color:#f4c542}
+
+h3{font-size:14px;margin:0 0 9px}
+
+.muted{font-size:12px;color:#9eabc1;line-height:1.6}
+
+.price{font-size:27px;color:#f4c542;font-weight:bold;margin:14px 0}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.metric{background:#1a2940;border-radius:9px;padding:12px;font-size:12px;color:#aab8ce}
+
+.metric strong{display:block;color:white;font-size:17px;margin-top:8px}
+
+button{background:#243650;color:white;border:1px solid #435875;border-radius:8px;padding:10px 14px;margin:3px;cursor:pointer}
+
+button.active{background:#e8bb43;color:#111827;font-weight:bold}
+
+.tag{display:inline-block;padding:5px 9px;border-radius:5px;background:#283952;font-size:10px}
+
+.gold{color:#f4c542}
+
+.green{color:#42d9a0}
+
+.red{color:#ff7181}
+
+.news{padding:14px 0;border-bottom:1px solid #293b56}
+
+.news:last-child{border-bottom:0}
+
+input{width:100%;padding:12px;margin:7px 0;background:#1a2940;border:1px solid #435875;color:white;border-radius:8px}
+
+.result{margin-top:12px;color:#42d9a0;font-size:13px}
+
+footer{text-align:center;padding:22px;color:#8290a6;font-size:11px}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">MIDO'S TRADING PRO</div>
+
+<div class="sub">PROFESSIONAL GOLD & FOREX MARKET ANALYSIS</div>
+
+</header>
+
+<main>
+
+<section class="card">
+
+<h2>GOLD MARKET | XAU/USD</h2>
+
+<span class="tag gold">LIVE DATA CONNECTION PENDING</span>
+
+<div class="price">Waiting for market data</div>
+
+<p class="muted">Live XM MT5 prices will appear here after data integration.</p>
+
+</section>
+
+<section class="card">
+
+<h2>Trading Timeframes</h2>
+
+<button class="active" onclick="setTF('M5',this)">M5</button>
+
+<button onclick="setTF('M15',this)">M15</button>
+
+<button onclick="setTF('H1',this)">H1</button>
+
+<p class="muted" id="tf">Selected timeframe: M5</p>
+
+</section>
+
+<section class="card">
+
+<h2>Technical Analysis</h2>
+
+<div class="grid">
+
+<div class="metric">RSI (14)<strong>Awaiting data</strong></div>
+
+<div class="metric">EMA 20<strong>Awaiting data</strong></div>
+
+<div class="metric">EMA 50<strong>Awaiting data</strong></div>
+
+<div class="metric">EMA 200<strong>Awaiting data</strong></div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Trading Signals</h2>
+
+<div class="tag gold">WAITING FOR MARKET DATA</div>
+
+<p class="muted">Signals will be calculated after live price and indicator integration.</p>
+
+<div class="grid">
+
+<div class="metric">Entry<strong>—</strong></div>
+
+<div class="metric">Stop Loss<strong>—</strong></div>
+
+<div class="metric">Take Profit 1<strong>—</strong></div>
+
+<div class="metric">Take Profit 2<strong>—</strong></div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>Support & Resistance</h2>
+
+<div class="grid">
+
+<div class="metric">Resistance<strong>Awaiting data</strong></div>
+
+<div class="metric">Support<strong>Awaiting data</strong></div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>NEWS ANALYSIS</h2>
+
+<span class="tag gold">USD + MAJOR GLOBAL EVENTS</span>
+
+<p class="muted">Economic news intelligence for XAU/USD gold traders.</p>
+
+<div class="news">
+
+<h3>NFP – Non-Farm Payrolls</h3>
+
+<span class="tag red">HIGH IMPACT</span>
+
+<p class="muted">Measures US employment growth. Stronger-than-expected results can support USD and pressure gold. Weaker results can have the opposite effect, depending on market expectations.</p>
+
+</div>
+
+<div class="news">
+
+<h3>CPI – US Inflation</h3>
+
+<span class="tag red">HIGH IMPACT</span>
+
+<p class="muted">Inflation data influences Federal Reserve interest-rate expectations. Higher-than-expected inflation can support USD and weigh on gold.</p>
+
+</div>
+
+<div class="news">
+
+<h3>FOMC – Federal Reserve</h3>
+
+<span class="tag red">HIGH IMPACT</span>
+
+<p class="muted">Interest-rate decisions, policy statements and Fed speeches can cause major movements in gold and the US dollar.</p>
+
+</div>
+
+<div class="news">
+
+<h3>PPI – Producer Price Index</h3>
+
+<span class="tag gold">MEDIUM / HIGH IMPACT</span>
+
+<p class="muted">Measures producer inflation and can influence expectations for future consumer prices.</p>
+
+</div>
+
+<div class="news">
+
+<h3>GDP – US Economic Growth</h3>
+
+<span class="tag gold">HIGH IMPACT</span>
+
+<p class="muted">Economic growth figures can influence the dollar, bond yields and gold sentiment.</p>
+
+</div>
+
+<div class="news">
+
+<h3>Unemployment Claims</h3>
+
+<span class="tag gold">MEDIUM IMPACT</span>
+
+<p class="muted">Weekly labour-market data that can influence USD expectations.</p>
+
+</div>
+
+<div class="news">
+
+<h3>GLOBAL GEOPOLITICAL EVENTS</h3>
+
+<span class="tag red">VARIABLE / HIGH IMPACT</span>
+
+<p class="muted">Wars, international tensions, trade disputes and political instability can increase demand for safe-haven assets such as gold.</p>
+
+</div>
+
+<div class="news">
+
+<h3>GLOBAL CENTRAL BANK DECISIONS</h3>
+
+<span class="tag gold">HIGH IMPACT</span>
+
+<p class="muted">Major central-bank policy decisions can affect currencies, interest rates and international gold demand.</p>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>NEWS SENTIMENT</h2>
+
+<div class="grid">
+
+<div class="metric">USD Outlook<strong>Awaiting news</strong></div>
+
+<div class="metric">Gold Outlook<strong>Awaiting news</strong></div>
+
+</div>
+
+<p class="muted">Automatic bullish, bearish or neutral assessments will require a live news feed and actual economic results. News direction is not guaranteed to determine gold's reaction.</p>
+
+</section>
+
+<section class="card">
+
+<h2>Risk Management Calculator</h2>
+
+<label class="muted">Account balance (USD)</label>
+
+<input id="balance" type="number" placeholder="Enter account balance">
+
+<label class="muted">Risk percentage (%)</label>
+
+<input id="risk" type="number" value="1" min="0.1" max="5" step="0.1">
+
+<button onclick="calculate()">Calculate Risk</button>
+
+<div id="riskResult" class="result">Your calculated risk will appear here.</div>
+
+</section>
+
+<section class="card">
+
+<h2>Trading Discipline</h2>
+
+<p class="muted">• Always use a Stop Loss.</p>
+
+<p class="muted">• Avoid entering trades blindly during NFP and CPI.</p>
+
+<p class="muted">• Confirm direction using M5, M15 and H1.</p>
+
+<p class="muted">• Never risk more than your trading plan allows.</p>
+
+</section>
+
+</main>
+
+<footer>
+
+MIDO'S TRADING PRO © 2026<br>
+
+Market analysis and educational tool. Not financial advice.
+
+</footer>
+
+<script>
+
+function setTF(tf,btn){
+
+document.querySelectorAll('button').forEach(b=>{
+
+if(['M5','M15','H1'].includes(b.textContent)) b.classList.remove('active');
+
+});
+
+btn.classList.add('active');
+
+document.getElementById('tf').textContent='Selected timeframe: '+tf;
+
+}
+
+function calculate(){
+
+let balance=Number(document.getElementById('balance').value);
+
+let risk=Number(document.getElementById('risk').value);
+
+let result=document.getElementById('riskResult');
+
+if(balance<=0 || risk<0.1 || risk>5){
+
+result.textContent='Enter a valid balance and risk between 0.1% and 5%.';
+
+return;
+
+}
+
+let amount=balance*risk/100;
+
+result.textContent='Maximum planned loss: $'+amount.toFixed(2);
+
+}
+
+</script>
+
+</body>
+
+</html>
