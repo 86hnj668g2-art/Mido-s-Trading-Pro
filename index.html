@@ -372,9 +372,43 @@ function analyze(raw){
 
  $("support").textContent=fmt(Math.min(...lows));
 
- let direction="WAIT",reason="Indicators are not fully aligned.";
+let direction="WAIT",reason="Indicators are not fully aligned.";
 
- if(e200!==null&&p>e20&&e20>e50&&e50>e200&&rv>=50&&rv<=70){
+let bullishTrend=e200!==null&&p>e200&&e20>e50&&e50>e200;
+let bearishTrend=e200!==null&&p<e200&&e20<e50&&e50<e200;
+
+if(e200===null||rv===null){
+ reason="More candle history is required.";
+}
+else if(bearishTrend&&rv<30){
+ direction="WAIT — BEARISH BIAS";
+ reason="Bearish trend, but RSI is oversold. Wait for a pullback before considering SELL.";
+}
+else if(bearishTrend&&rv>=30&&rv<=55){
+ direction="SELL";
+ reason="Bearish EMA alignment with RSI confirmation.";
+}
+else if(bullishTrend&&rv>70){
+ direction="WAIT — BULLISH BIAS";
+ reason="Bullish trend, but RSI is overbought. Wait for a pullback before considering BUY.";
+}
+else if(bullishTrend&&rv>=45&&rv<=70){
+ direction="BUY";
+ reason="Bullish EMA alignment with RSI confirmation.";
+}
+else if(bearishTrend){
+ direction="WAIT — BEARISH BIAS";
+ reason="Bearish trend, but momentum needs confirmation.";
+}
+else if(bullishTrend){
+ direction="WAIT — BULLISH BIAS";
+ reason="Bullish trend, but momentum needs confirmation.";
+}
+else{
+ reason="No clear trend confirmation. Wait for a better setup.";
+}
+
+ 
 
   direction="BUY";
 
