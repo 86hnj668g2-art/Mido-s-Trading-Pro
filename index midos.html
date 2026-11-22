@@ -20,41 +20,39 @@
 
 body{margin:0;background:#080d18;color:#edf2ff;font-family:Arial,sans-serif}
 
-header{background:#111c30;padding:20px;text-align:center;border-bottom:1px solid #263653}
+header{background:#111c30;padding:22px 16px;border-bottom:2px solid #e8bb43}
 
-h1{margin:0;color:#e8b84b;font-size:25px}
+.logo{font-size:24px;font-weight:bold;color:#f4c542}
 
-header p{color:#a9b7ce;margin:7px 0 0}
+.sub,.muted{font-size:12px;color:#9eabc1;line-height:1.6}
 
-main{max-width:950px;margin:auto;padding:15px}
+main{max-width:850px;margin:auto;padding:14px}
 
-.card{background:#111c30;border:1px solid #263653;border-radius:13px;padding:15px;margin-bottom:15px}
+.card{background:#111c30;border:1px solid #293b56;border-radius:13px;padding:16px;margin-bottom:14px}
 
-h2{font-size:18px;color:#e8b84b;margin:0 0 13px}
+h2{font-size:17px;color:#f4c542;margin:0 0 14px}
 
-label{display:block;color:#aebbd0;font-size:13px;margin:10px 0 5px}
+.price{font-size:28px;color:#f4c542;font-weight:bold;margin:14px 0}
 
-select,input,textarea{width:100%;padding:12px;background:#080d18;color:white;border:1px solid #344663;border-radius:8px;font-size:15px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-button{background:#e8b84b;color:#111827;border:0;padding:12px 15px;border-radius:8px;font-weight:bold;cursor:pointer;margin:5px 3px 5px 0}
+.metric{background:#1a2940;border-radius:9px;padding:12px;font-size:12px;color:#aab8ce}
 
-button.secondary{background:#263653;color:white}
+.metric strong{display:block;color:white;font-size:17px;margin-top:8px}
 
-.chart{width:100%;height:480px;border:0;border-radius:9px;background:#080d18}
+button{background:#243650;color:white;border:1px solid #435875;border-radius:8px;padding:11px;margin:4px}
 
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+button.active{background:#e8bb43;color:#111827;font-weight:bold}
 
-.result{background:#080d18;padding:12px;border-radius:8px;margin-top:10px}
+input,select{width:100%;padding:12px;margin:7px 0;background:#1a2940;border:1px solid #435875;color:white;border-radius:8px}
 
-.small{font-size:12px;color:#9eacc2;line-height:1.5}
+.tag{display:inline-block;padding:5px 9px;border-radius:5px;background:#283952;font-size:11px}
 
-.news{padding:10px 0;border-bottom:1px solid #263653;line-height:1.5}
+.gold{color:#f4c542}.green{color:#42d9a0}.red{color:#ff7181}
 
-.entry{background:#080d18;padding:12px;border-radius:8px;margin-top:9px}
+.status{font-size:12px;color:#9eabc1;line-height:1.6;margin-top:10px}
 
-footer{text-align:center;color:#8190a8;padding:20px;font-size:12px}
-
-@media(max-width:550px){.grid{grid-template-columns:1fr}.chart{height:420px}}
+footer{text-align:center;padding:22px;color:#8290a6;font-size:11px}
 
 </style>
 
@@ -64,377 +62,413 @@ footer{text-align:center;color:#8190a8;padding:20px;font-size:12px}
 
 <header>
 
-<h1>MIDO'S TRADING PRO</h1>
+<div class="logo">MIDO'S TRADING PRO</div>
 
-<p>Forex & Gold Trading Dashboard</p>
+<div class="sub">PROFESSIONAL GOLD & FOREX MARKET ANALYSIS</div>
 
 </header>
 
 <main>
 
-<div class="card">
+<section class="card">
 
-<h2>Market Selection</h2>
-
-<label>Select trading instrument</label>
-
-<select id="pair" onchange="changeChart()">
-
-<option value="OANDA:XAUUSD">Gold (XAU/USD)</option>
-
-<option value="OANDA:EURUSD">EUR/USD</option>
-
-<option value="OANDA:GBPUSD">GBP/USD</option>
-
-<option value="OANDA:USDJPY">USD/JPY</option>
-
-<option value="OANDA:USDCHF">USD/CHF</option>
-
-<option value="OANDA:AUDUSD">AUD/USD</option>
-
-<option value="OANDA:USDCAD">USD/CAD</option>
-
-<option value="OANDA:NZDUSD">NZD/USD</option>
-
-</select>
-
-<label>Chart timeframe</label>
-
-<select id="timeframe" onchange="changeChart()">
-
-<option value="5">M5 - Scalping</option>
-
-<option value="15" selected>M15 - Intraday</option>
-
-<option value="60">H1 - Trend</option>
-
-</select>
-
-<div style="margin-top:12px">
-
-<iframe id="chart" class="chart" title="Live TradingView chart"
-
-src="https://www.tradingview.com/widgetembed/?symbol=OANDA%3AXAUUSD&interval=15&theme=dark&style=1&locale=en&toolbar_bg=%23080d18&hide_top_toolbar=false&allow_symbol_change=true&save_image=false&withdateranges=true"
-
-allowfullscreen></iframe>
-
-</div>
-
-<p class="small">Chart supplied by TradingView. Market prices and availability depend on the provider.</p>
-
-</div>
-
-<div class="card">
-
-<h2>Technical Analysis</h2>
-
-<p class="small">Open the selected market's TradingView technical analysis to review RSI, moving averages and other indicators.</p>
-
-<button onclick="openAnalysis()">Open Technical Analysis</button>
-
-<button class="secondary" onclick="openChart()">Full Chart</button>
-
-<div class="result">
-
-<strong>Analysis checklist</strong>
-
-<p class="small">Review RSI (14), EMA 20, EMA 50 and EMA 200. Check trend direction, support and resistance, and candle confirmation before considering a trade.</p>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>Trading Signal Guide</h2>
-
-<div class="result">
-
-<strong style="color:#e8b84b">BUY consideration</strong>
-
-<p class="small">Price above EMA 20 and EMA 50, bullish momentum, RSI supporting the move and confirmation at support.</p>
-
-</div>
-
-<div class="result">
-
-<strong style="color:#ff7373">SELL consideration</strong>
-
-<p class="small">Price below EMA 20 and EMA 50, bearish momentum, RSI supporting the move and confirmation at resistance.</p>
-
-</div>
-
-<div class="result">
-
-<strong style="color:#aebbd0">WAIT</strong>
-
-<p class="small">Mixed indicators, sideways market, major news approaching or no clear entry confirmation.</p>
-
-</div>
-
-<p class="small">These are educational conditions, not live calculated signals. Always verify indicators on the chart.</p>
-
-</div>
-
-<div class="card">
-
-<h2>Risk Calculator</h2>
-
-<div class="grid">
-
-<div>
-
-<label>Account balance</label>
-
-<input id="balance" type="number" value="1000" min="0">
-
-</div>
-
-<div>
-
-<label>Account currency</label>
-
-<select id="currency">
-
-<option value="USD">USD ($)</option>
-
-<option value="ZAR">ZAR (R)</option>
-
-</select>
-
-</div>
-
-<div>
-
-<label>Risk percentage</label>
-
-<input id="risk" type="number" value="1" min="0" max="100" step="0.1">
-
-</div>
-
-<div>
-
-<label>Stop loss (pips / points)</label>
-
-<input id="stop" type="number" value="30" min="0.01">
-
-</div>
-
-</div>
-
-<button onclick="calculateRisk()">Calculate Risk</button>
-
-<div class="result" id="riskResult">Your risk calculation will appear here.</div>
-
-<p class="small">This calculates the amount at risk only. It does not calculate lot size because pip values differ by instrument and account currency.</p>
-
-</div>
-
-<div class="card">
-
-<h2>News Analysis & Economic Events</h2>
-
-<div class="news"><strong>US Non-Farm Payrolls (NFP)</strong><br><span class="small">Can cause strong USD and gold volatility. Watch actual results against forecasts.</span></div>
-
-<div class="news"><strong>Consumer Price Index (CPI)</strong><br><span class="small">Inflation data can influence interest-rate expectations and gold.</span></div>
-
-<div class="news"><strong>Federal Reserve (FOMC)</strong><br><span class="small">Interest-rate decisions and guidance can move USD, gold and major pairs.</span></div>
-
-<div class="news"><strong>GDP and Unemployment Claims</strong><br><span class="small">Economic growth and labour-market data can affect currency sentiment.</span></div>
-
-<div class="news"><strong>Geopolitical developments</strong><br><span class="small">Unexpected events can increase volatility and demand for safe-haven assets.</span></div>
-
-<button onclick="window.open('https://www.tradingview.com/economic-calendar/','_blank')">Open Economic Calendar</button>
-
-<button class="secondary" onclick="window.open('https://www.forexfactory.com/calendar','_blank')">Forex Factory Calendar</button>
-
-</div>
-
-<div class="card">
-
-<h2>Trading Journal</h2>
+<h2>MARKET DATA CONNECTION</h2>
 
 <label>Instrument</label>
 
-<select id="journalPair">
+<select id="symbol">
 
-<option>XAU/USD</option><option>EUR/USD</option><option>GBP/USD</option>
+<option value="XAU/USD">Gold XAU/USD</option>
 
-<option>USD/JPY</option><option>USD/CHF</option><option>AUD/USD</option>
+<option value="EUR/USD">EUR/USD</option>
 
-<option>USD/CAD</option><option>NZD/USD</option>
+<option value="GBP/USD">GBP/USD</option>
+
+<option value="USD/JPY">USD/JPY</option>
+
+<option value="USD/CHF">USD/CHF</option>
+
+<option value="AUD/USD">AUD/USD</option>
+
+<option value="USD/CAD">USD/CAD</option>
+
+<option value="NZD/USD">NZD/USD</option>
 
 </select>
 
-<label>Trade direction</label>
+<label>Timeframe</label>
 
-<select id="direction"><option>BUY</option><option>SELL</option></select>
+<select id="timeframe">
 
-<label>Trade result</label>
+<option value="5min">M5</option>
 
-<select id="outcome"><option>Win</option><option>Loss</option><option>Break-even</option></select>
+<option value="15min">M15</option>
 
-<label>Profit / Loss amount</label>
+<option value="1h">H1</option>
 
-<input id="profit" type="number" placeholder="Enter amount">
+</select>
 
-<label>Notes</label>
+<div class="price" id="price">Waiting for market data</div>
 
-<textarea id="notes" rows="3" placeholder="Why did you enter? What did you learn?"></textarea>
+<p class="muted" id="priceInfo">Connect your Twelve Data API key to begin.</p>
 
-<button onclick="saveTrade()">Save Trade</button>
+<button id="load">LOAD MARKET DATA</button>
 
-<div id="journalEntries"></div>
+<button id="settings">API SETTINGS</button>
+
+<p class="status" id="status">Not connected.</p>
+
+</section>
+
+<section class="card" id="settingsPanel" hidden>
+
+<h2>TWELVE DATA API SETTINGS</h2>
+
+<label>Enter your API key</label>
+
+<input id="apiKey" type="password" placeholder="Paste your API key">
+
+<button id="saveKey">SAVE API KEY</button>
+
+<button id="closeSettings">CLOSE</button>
+
+<p class="muted">The key is stored in this browser on your device. This is not secure secret storage. Do not use a shared device or publish your key on GitHub.</p>
+
+</section>
+
+<section class="card">
+
+<h2>TECHNICAL ANALYSIS</h2>
+
+<div class="grid">
+
+<div class="metric">RSI 14<strong id="rsi">—</strong></div>
+
+<div class="metric">EMA 20<strong id="ema20">—</strong></div>
+
+<div class="metric">EMA 50<strong id="ema50">—</strong></div>
+
+<div class="metric">EMA 200<strong id="ema200">—</strong></div>
 
 </div>
+
+<p class="muted" id="trend">Indicators will appear when candle data loads.</p>
+
+</section>
+
+<section class="card">
+
+<h2>TRADING SIGNAL</h2>
+
+<div class="tag gold" id="signal">WAIT — NO DATA</div>
+
+<p class="muted" id="reason">Waiting for technical confirmation.</p>
+
+<div class="grid">
+
+<div class="metric">Entry<strong id="entry">—</strong></div>
+
+<div class="metric">Stop Loss<strong id="sl">—</strong></div>
+
+<div class="metric">Take Profit 1<strong id="tp1">—</strong></div>
+
+<div class="metric">Take Profit 2<strong id="tp2">—</strong></div>
+
+</div>
+
+<p class="muted">Technical estimates only. Always confirm price, spread and risk before trading.</p>
+
+</section>
+
+<section class="card">
+
+<h2>SUPPORT & RESISTANCE</h2>
+
+<div class="grid">
+
+<div class="metric">Resistance<strong id="resistance">—</strong></div>
+
+<div class="metric">Support<strong id="support">—</strong></div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>RISK CALCULATOR</h2>
+
+<label>Account balance (USD)</label>
+
+<input id="balance" type="number" placeholder="Enter balance">
+
+<label>Risk percentage</label>
+
+<input id="risk" type="number" value="1" min="0.1" max="5">
+
+<button id="calculate">CALCULATE RISK</button>
+
+<p class="status" id="riskResult">Your risk amount will appear here.</p>
+
+</section>
+
+<section class="card">
+
+<h2>NEWS AWARENESS</h2>
+
+<p class="muted"><b>NFP:</b> US employment data can cause major gold movements.</p>
+
+<p class="muted"><b>CPI:</b> Inflation data affects interest-rate expectations.</p>
+
+<p class="muted"><b>FOMC:</b> Federal Reserve decisions can influence gold and USD.</p>
+
+<p class="muted"><b>GDP and PPI:</b> Economic releases can change market sentiment.</p>
+
+<p class="muted">This is educational information, not a live news feed.</p>
+
+</section>
 
 </main>
 
 <footer>
 
-Mido's Trading Pro | Trade with discipline. Protect your capital.
+MIDO'S TRADING PRO © 2026<br>
 
-<br>Educational tool only. Trading involves risk.
+Educational market analysis. Not financial advice.
 
 </footer>
 
 <script>
 
-function changeChart(){
+const $=id=>document.getElementById(id);
 
-const pair=document.getElementById('pair').value;
+function ema(values,period){
 
-const tf=document.getElementById('timeframe').value;
+ if(values.length<period)return null;
 
-document.getElementById('chart').src=
+ let k=2/(period+1);
 
-'https://www.tradingview.com/widgetembed/?symbol='+encodeURIComponent(pair)+
+ let v=values.slice(0,period).reduce((a,b)=>a+b,0)/period;
 
-'&interval='+tf+'&theme=dark&style=1&locale=en&toolbar_bg=%23080d18&hide_top_toolbar=false&allow_symbol_change=true&save_image=false&withdateranges=true';
+ for(let i=period;i<values.length;i++)v=values[i]*k+v*(1-k);
 
-}
-
-function openAnalysis(){
-
-const pair=document.getElementById('pair').value;
-
-window.open('https://www.tradingview.com/symbols/'+pair.replace(':','-')+'/technicals/','_blank');
+ return v;
 
 }
 
-function openChart(){
+function rsi(values){
 
-window.open('https://www.tradingview.com/chart/?symbol='+encodeURIComponent(document.getElementById('pair').value),'_blank');
+ if(values.length<15)return null;
 
-}
+ let gain=0,loss=0;
 
-function calculateRisk(){
+ for(let i=1;i<=14;i++){
 
-const balance=Number(document.getElementById('balance').value);
+  let d=values[i]-values[i-1];
 
-const percent=Number(document.getElementById('risk').value);
+  if(d>0)gain+=d;else loss-=d;
 
-const stop=Number(document.getElementById('stop').value);
+ }
 
-if(balance<=0||percent<=0||percent>100||stop<=0){
+ gain/=14;loss/=14;
 
-document.getElementById('riskResult').textContent='Please enter valid positive values. Risk must not exceed 100%.';
+ for(let i=15;i<values.length;i++){
 
-return;
+  let d=values[i]-values[i-1];
 
-}
+  gain=(gain*13+Math.max(d,0))/14;
 
-const amount=balance*percent/100;
+  loss=(loss*13+Math.max(-d,0))/14;
 
-const currency=document.getElementById('currency').value;
+ }
 
-const symbol=currency==='ZAR'?'R':'$';
-
-document.getElementById('riskResult').innerHTML=
-
-'<strong>Maximum planned risk: '+symbol+amount.toFixed(2)+'</strong><br>'+
-
-'Stop distance: '+stop+' pips / points<br>'+
-
-'Risk per pip / point: '+symbol+(amount/stop).toFixed(2);
+ return loss===0?100:100-100/(1+gain/loss);
 
 }
 
-function getTrades(){
+function fmt(n){
 
-try{return JSON.parse(localStorage.getItem('midoTrades')||'[]')}catch(e){return []}
+ return n===null||!Number.isFinite(n)?"—":n.toFixed(n>=100?2:n>=1?4:5);
 
 }
 
-function saveTrade(){
+function analyze(raw){
 
-const trade={
+ let data=raw.slice().reverse();
 
-pair:document.getElementById('journalPair').value,
+ let closes=data.map(x=>Number(x.close));
 
-direction:document.getElementById('direction').value,
+ let p=closes.at(-1);
 
-outcome:document.getElementById('outcome').value,
+ let e20=ema(closes,20),e50=ema(closes,50),e200=ema(closes,200);
 
-profit:document.getElementById('profit').value,
+ let rv=rsi(closes);
 
-notes:document.getElementById('notes').value,
+ $("price").textContent=fmt(p);
 
-date:new Date().toLocaleString()
+ $("priceInfo").textContent=$("symbol").value+" | Latest candle: "+data.at(-1).datetime;
+
+ $("rsi").textContent=rv===null?"—":rv.toFixed(1);
+
+ $("ema20").textContent=fmt(e20);
+
+ $("ema50").textContent=fmt(e50);
+
+ $("ema200").textContent=fmt(e200);
+
+ let highs=data.slice(-30).map(x=>Number(x.high));
+
+ let lows=data.slice(-30).map(x=>Number(x.low));
+
+ $("resistance").textContent=fmt(Math.max(...highs));
+
+ $("support").textContent=fmt(Math.min(...lows));
+
+ let direction="WAIT",reason="Indicators are not fully aligned.";
+
+ if(e200!==null&&p>e20&&e20>e50&&e50>e200&&rv>=50&&rv<=70){
+
+  direction="BUY";
+
+  reason="Bullish EMA alignment with supportive RSI.";
+
+ }
+
+ if(e200!==null&&p<e20&&e20<e50&&e50<e200&&rv>=30&&rv<=50){
+
+  direction="SELL";
+
+  reason="Bearish EMA alignment with supportive RSI.";
+
+ }
+
+ if(e200===null)reason="More candle history is required for EMA 200.";
+
+ $("signal").textContent=direction;
+
+ $("signal").className="tag "+(direction==="BUY"?"green":direction==="SELL"?"red":"gold");
+
+ $("reason").textContent=reason;
+
+ let ranges=data.slice(-14).map(x=>Number(x.high)-Number(x.low));
+
+ let avg=ranges.reduce((a,b)=>a+b,0)/ranges.length;
+
+ let stop=direction==="BUY"?p-avg*1.5:direction==="SELL"?p+avg*1.5:null;
+
+ $("entry").textContent=direction==="WAIT"?"—":fmt(p);
+
+ $("sl").textContent=stop===null?"—":fmt(stop);
+
+ $("tp1").textContent=stop===null?"—":fmt(direction==="BUY"?p+avg*1.5:p-avg*1.5);
+
+ $("tp2").textContent=stop===null?"—":fmt(direction==="BUY"?p+avg*2.5:p-avg*2.5);
+
+ $("trend").textContent="Analysis based on the selected timeframe and returned candle history.";
+
+}
+
+async function loadData(){
+
+ let key=localStorage.getItem("mido_api_key");
+
+ if(!key){
+
+  $("settingsPanel").hidden=false;
+
+  $("status").textContent="Please enter your API key.";
+
+  return;
+
+ }
+
+ $("load").disabled=true;
+
+ $("status").textContent="Connecting to Twelve Data...";
+
+ try{
+
+  let symbol=$("symbol").value;
+
+  let interval=$("timeframe").value;
+
+  let url="https://api.twelvedata.com/time_series?symbol="+encodeURIComponent(symbol)+"&interval="+interval+"&outputsize=250&apikey="+encodeURIComponent(key);
+
+  let response=await fetch(url);
+
+  let data=await response.json();
+
+  if(data.status==="error"||!data.values)throw Error(data.message||"No candle data returned. Check your plan and API key.");
+
+  if(data.values.length<30)throw Error("Not enough candle history returned.");
+
+  analyze(data.values);
+
+  $("status").textContent="Market data loaded successfully. Tap Load Market Data to refresh.";
+
+ }catch(e){
+
+  $("status").textContent="Connection problem: "+e.message;
+
+  $("price").textContent="Waiting for market data";
+
+ }finally{
+
+  $("load").disabled=false;
+
+ }
+
+}
+
+$("settings").onclick=()=>{
+
+ $("settingsPanel").hidden=!$("settingsPanel").hidden;
+
+ $("apiKey").value=localStorage.getItem("mido_api_key")||"";
 
 };
 
-const trades=getTrades();
+$("closeSettings").onclick=()=>{$("settingsPanel").hidden=true;};
 
-trades.unshift(trade);
+$("saveKey").onclick=()=>{
 
-try{
+ let key=$("apiKey").value.trim();
 
-localStorage.setItem('midoTrades',JSON.stringify(trades));
+ if(!key){$("status").textContent="Please enter your API key.";return;}
 
-document.getElementById('profit').value='';
+ localStorage.setItem("mido_api_key",key);
 
-document.getElementById('notes').value='';
+ $("settingsPanel").hidden=true;
 
-showTrades();
+ $("status").textContent="API key saved on this device. Tap Load Market Data.";
 
-}catch(e){alert('Could not save. Check your browser storage settings.');}
+};
 
-}
+$("load").onclick=loadData;
 
-function showTrades(){
+$("calculate").onclick=()=>{
 
-const trades=getTrades();
+ let balance=Number($("balance").value);
 
-const area=document.getElementById('journalEntries');
+ let risk=Number($("risk").value);
 
-area.innerHTML='<h3>Saved Trades ('+trades.length+')</h3>';
+ if(balance<=0||risk<0.1||risk>5){
 
-trades.forEach(t=>{
+  $("riskResult").textContent="Enter a valid balance and risk between 0.1% and 5%.";
 
-const item=document.createElement('div');
+  return;
 
-item.className='entry';
+ }
 
-const title=document.createElement('strong');
+ $("riskResult").textContent="Maximum planned loss: $"+(balance*risk/100).toFixed(2);
 
-title.textContent=t.pair+' | '+t.direction+' | '+t.outcome;
+};
 
-const details=document.createElement('p');
+if(localStorage.getItem("mido_api_key")){
 
-details.className='small';
-
-details.textContent=t.date+' | Result: '+(t.profit||'Not entered')+' | '+t.notes;
-
-item.append(title,details);
-
-area.appendChild(item);
-
-});
+ $("status").textContent="API key found. Tap Load Market Data.";
 
 }
-
-showTrades();
 
 </script>
 
