@@ -410,22 +410,7 @@ else{
 
  
 
-  direction="BUY";
-
-  reason="Bullish EMA alignment with supportive RSI.";
-
- }
-
- if(e200!==null&&p<e20&&e20<e50&&e50<e200&&rv>=30&&rv<=50){
-
-  direction="SELL";
-
-  reason="Bearish EMA alignment with supportive RSI.";
-
- }
-
- if(e200===null)reason="More candle history is required for EMA 200.";
-
+  
  $("signal").textContent=direction;
 
  $("signal").className="tag "+(direction==="BUY"?"green":direction==="SELL"?"red":"gold");
