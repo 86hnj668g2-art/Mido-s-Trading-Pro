@@ -502,7 +502,36 @@ let direction="WAIT",reason="Indicators are not fully aligned.";
 
 let bullishTrend=e200!==null&&p>e200&&e20>e50&&e50>e200;
 let bearishTrend=e200!==null&&p<e200&&e20<e50&&e50<e200;
+// GOLD PRE-NEWS FORECAST
+let goldBias = "NEUTRAL";
+let goldReason = "No clear trend confirmation.";
+let goldImpact = "Pending";
+let goldConfidence = "Low";
+let goldAction = "WAIT FOR CONFIRMATION";
 
+if (e200 !== null && rv !== null) {
+  if (bullishTrend && rv >= 50 && rv <= 70) {
+    goldBias = "BULLISH";
+    goldReason = "Gold is above its EMAs with positive RSI momentum.";
+    goldImpact = "Potentially high";
+    goldConfidence = "Medium";
+    goldAction = "BUY BIAS — WAIT FOR CONFIRMATION";
+  } else if (bearishTrend && rv >= 30 && rv < 50) {
+    goldBias = "BEARISH";
+    goldReason = "Gold is below its EMAs with negative RSI momentum.";
+    goldImpact = "Potentially high";
+    goldConfidence = "Medium";
+    goldAction = "SELL BIAS — WAIT FOR CONFIRMATION";
+  } else {
+    goldReason = "Indicators are mixed. Wait for clearer market direction.";
+  }
+}
+
+$("goldNewsBias").textContent = goldBias;
+$("goldNewsReason").textContent = goldReason;
+$("goldNewsImpact").textContent = goldImpact;
+$("goldNewsConfidence").textContent = goldConfidence;
+$("goldNewsAction").textContent = goldAction;
 if(e200===null||rv===null){
  reason="More candle history is required.";
 }
