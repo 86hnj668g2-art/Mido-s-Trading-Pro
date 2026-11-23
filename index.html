@@ -57,13 +57,103 @@ input,select{width:100%;padding:12px;margin:7px 0;background:#1a2940;border:1px 
 .status{font-size:12px;color:#9eabc1;line-height:1.6;margin-top:10px}
 
 footer{text-align:center;padding:22px;color:#8290a6;font-size:11px}
+/* PRE-NEWS GOLD PREDICTOR */
+.pre-news-card {
+    background: #111827;
+    border: 1px solid #d4af37;
+    border-radius: 14px;
+    padding: 16px;
+    margin: 18px 0;
+    color: white;
+}
 
+.pre-news-card h2 {
+    color: #d4af37;
+    margin-bottom: 12px;
+}
+
+.pre-news-result {
+    padding: 12px;
+    background: #1f2937;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.pre-news-bullish {
+    color: #22c55e;
+}
+
+.pre-news-bearish {
+    color: #ef4444;
+}
+
+.pre-news-neutral {
+    color: #facc15;
+}
 </style>
 
 </head>
 
 <body>
 
+
+<!-- PRE-NEWS GOLD PREDICTOR -->
+
+<div class="pre-news-card" id="preNewsPredictor">
+
+    <h2>🔔 PRE-NEWS GOLD PREDICTOR</h2>
+
+    <div class="pre-news-result">
+
+        <p>Economic Event: <span id="newsEvent">Waiting for US news</span></p>
+
+        <p>Expected Gold Direction:
+
+            <strong id="goldDirection">ANALYSING...</strong>
+
+        </p>
+
+    </div>
+
+    <div class="pre-news-result">
+
+        <p>News Impact:
+
+            <strong id="newsImpact">Pending</strong>
+
+        </p>
+
+        <p>Confidence:
+
+            <strong id="newsConfidence">Pending</strong>
+
+        </p>
+
+    </div>
+
+    <div class="pre-news-result">
+
+        <p>Trading Guidance:</p>
+
+        <strong id="newsGuidance">Waiting for confirmation</strong>
+
+    </div>
+
+    <div class="pre-news-result">
+
+        <p>Analysis Explanation:</p>
+
+        <span id="newsExplanation">
+
+            Waiting for economic data analysis.
+
+        </span>
+
+    </div>
+
+</div>
+
+<!-- END PRE-NEWS GOLD PREDICTOR -->
 <header>
 
 <div class="logo">MIDO'S TRADING PRO</div>
@@ -589,7 +679,28 @@ else{
  $("trend").textContent="Analysis based on the selected timeframe and returned candle history.";
 
 }
+// PRE-NEWS GOLD PREDICTOR
+function updatePreNewsPredictor(){
 
+    const direction = document.getElementById("goldDirection");
+    const impact = document.getElementById("newsImpact");
+    const confidence = document.getElementById("newsConfidence");
+    const guidance = document.getElementById("newsGuidance");
+    const explanation = document.getElementById("newsExplanation");
+
+    if(!direction || !impact || !confidence || !guidance || !explanation) return;
+
+    direction.textContent = "WAITING FOR DATA";
+    direction.className = "pre-news-neutral";
+
+    impact.textContent = "Awaiting US economic data";
+    confidence.textContent = "Low";
+    guidance.textContent = "NO TRADE — WAIT FOR CONFIRMATION";
+
+    explanation.textContent =
+        "The predictor needs verified US economic forecasts and previous results before estimating the possible impact on Gold (XAU/USD).";
+
+}
 async function loadData(){
 
  let key=localStorage.getItem("mido_api_key");
@@ -691,7 +802,7 @@ if(localStorage.getItem("mido_api_key")){
  $("status").textContent="API key found. Tap Load Market Data.";
 
 }
-
+updatePreNewsPredictor();
 </script>
 
 </body>
